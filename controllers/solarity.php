@@ -28,14 +28,16 @@ class Solarity extends Controller
         parent::__construct('SolarityModel', false);
     }
     
-    public function initialize($app_index_file)
+    public function initialize($app_root, $index, $app_url)
     {
-        $this->_model->initialize($app_index_file);
+        define('APP_ROOT', dirname($app_root) . '/'); // Define global app root constant.
+        define('INDEX', $index); // Index controller.
+        define('APP_URL', $app_url);
     }
     
     public function bootstrap()
     {
-        
+        return $this->_model->bootstrap();
     }
     
     public function load_library($library)
