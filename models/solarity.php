@@ -19,8 +19,9 @@ class SolarityModel
     
     public function load_library($library)
     {
-        $path = SOLARITY_ROOT . 'libraries/' . $library . '.php';
-        file_exists($path) && include_once($path);
+        $path = SOLARITY_ROOT . 'libraries/' . $library . '/';
+        is_dir($path) && include_once($path . 'controller.php');
+        is_dir($path) && include_once($path . 'model.php');
     }
 }
 
