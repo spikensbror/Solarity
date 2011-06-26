@@ -24,5 +24,6 @@ class Mustache extends Controller
         echo($this->_model->render($path, ($json) ? json_decode($tags) : $tags));
     }
 }
+Solarity::get_instance()->register('mustache', new Mustache());
 
 ?>
