@@ -23,7 +23,7 @@ class View
             array
             (
                 'APP_URL' => APP_URL
-            );
+            )
         );
     }
     
