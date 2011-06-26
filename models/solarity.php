@@ -54,21 +54,18 @@ class SolarityModel
         
         $controller_path = APP_ROOT . 'controllers/' . $controller . '.php';
         $model_path = APP_ROOT . 'models/' . $controller . '.php';
-        if(!file_exists($path))
+        if(!file_exists($controller_path))
         {
-            die('debug1');
-            //header('Location: ' . APP_URL . 'error/show/404/');
+            header('Location: ' . APP_URL . 'error/show/404/');
         }
         
         include_once($controller_path);
         @include_once($model_path);
         
-        var_dump($tokens);
         $controller = new $controller();
         if(!method_exists($controller, $method))
         {
-            die('debug2');
-            //header('Location: ' . APP_URL . 'error/show/404/');
+            header('Location: ' . APP_URL . 'error/show/404/');
         }
         
         call_user_func_array(array($controller, $method), $arguments);
