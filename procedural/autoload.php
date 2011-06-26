@@ -13,7 +13,7 @@
 // Main autoload function. (called from others but never bound)
 function _autoload($class, $path)
 {
-    $path = SOLARITY_ROOT . $path . $class . '.php';
+    $path = SOLARITY_ROOT . $path . strtolower($class) . '.php';
     if(!file_exists($path))
     {
         return false;
