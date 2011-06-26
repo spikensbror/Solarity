@@ -41,7 +41,7 @@ class SolarityModel
         
         $tokens['controller'] = (sizeof($tokens) > 0) ? array_shift($explode) : INDEX;
         $tokens['method'] = (sizeof($tokens) > 0) ? array_shift($explode) : null;
-        $tokens['arguments'] = (sizeof($tokens) > 0) ? array_shift($explode) : array();
+        $tokens['arguments'] = (sizeof($tokens) > 0) ? $explode : array();
         
         return $tokens;
     }
@@ -60,7 +60,7 @@ class SolarityModel
         }
         
         include_once($controller_path);
-        include_once($model_path);
+        @include_once($model_path);
         
         $controller = new $controller();
         if(!method_exists($controller, $method))
