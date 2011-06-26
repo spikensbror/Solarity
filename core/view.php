@@ -42,7 +42,7 @@ class View
         
         ($extras) ? $this->render('core/header', false, false) : null;
         echo(Solarity::get_instance()->mustache->render($view, (!$tags) ? $this->_tags : array_merge($this->_tags, $tags)));
-        ($extras) ? $this->render('core/header', false, false) : null;
+        ($extras) ? $this->render('core/footer', false, false) : null;
     }
 }
 
