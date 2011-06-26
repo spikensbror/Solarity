@@ -65,7 +65,8 @@ class SolarityModel
         $controller = new $controller();
         if(!method_exists($controller, $method))
         {
-            header('Location: ' . APP_URL . 'error/show/404/');
+            echo('debug');
+            //header('Location: ' . APP_URL . 'error/show/404/');
         }
         
         call_user_func_array(array($controller, $method), $arguments);
