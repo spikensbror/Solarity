@@ -63,6 +63,7 @@ class SolarityModel
         include_once($controller_path);
         @include_once($model_path);
         
+        var_dump($tokens);
         $controller = new $controller();
         if(!method_exists($controller, $method))
         {
