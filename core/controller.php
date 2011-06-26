@@ -15,9 +15,9 @@ abstract class Controller
     protected $_model = null;
     protected $_view = null;
     
-    protected function __construct($model, $view = true)
+    protected function __construct($model = false, $view = true)
     {
-        $this->_model = new $model();
+        $this->_model = (!$model) ? null : new $model();
         $this->_view = ($view) ? new View() : null;
     }
 }
