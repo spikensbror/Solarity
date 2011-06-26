@@ -33,6 +33,11 @@ class Solarity extends Controller
         $this->_model->initialize($app_index_file);
     }
     
+    public function bootstrap()
+    {
+        
+    }
+    
     public function load_library($library)
     {
         $this->_model->load_library($library);
