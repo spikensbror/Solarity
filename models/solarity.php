@@ -36,12 +36,12 @@ class SolarityModel
     
     private function _tokenize_uri($uri)
     {
-        $explode = explode('/', trim($uri, '/'));
+        $explode = explode('/', rtrim($uri, '/'));
         $tokens = array();
         
-        $tokens['controller'] = (sizeof($tokens) > 0) ? array_shift($explode) : INDEX;
-        $tokens['method'] = (sizeof($tokens) > 0) ? array_shift($explode) : null;
-        $tokens['arguments'] = (sizeof($tokens) > 0) ? $explode : array();
+        $tokens['controller'] = (sizeof($explode) > 0) ? array_shift($explode) : INDEX;
+        $tokens['method'] = (sizeof($explode) > 0) ? array_shift($explode) : null;
+        $tokens['arguments'] = (sizeof($explode) > 0) ? $explode : array();
         
         return $tokens;
     }
@@ -55,12 +55,9 @@ class SolarityModel
         $controller_path = APP_ROOT . 'controllers/' . $controller . '.php';
         $model_path = APP_ROOT . 'models/' . $controller . '.php';
         
-        var_dump($tokens);
-        var_dump($_GET);
-        exit;
         if(!file_exists($controller_path))
         {
-            //header('Location: ' . APP_URL . 'error/show/404/');
+            header('Location: ' . APP_URL . 'error/show/404/');
         }
         
         include_once($controller_path);
@@ -69,7 +66,7 @@ class SolarityModel
         $controller = new $controller();
         if(!method_exists($controller, $method))
         {
-            //header('Location: ' . APP_URL . 'error/show/404/');
+            header('Location: ' . APP_URL . 'error/show/404/');
         }
         
         call_user_func_array(array($controller, $method), $arguments);
