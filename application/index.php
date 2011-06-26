@@ -14,7 +14,7 @@
 include_once('../solarity.php');
 
 // Initialize. (change index_controller to your index controller and the url to the url of your application)
-Solarity::get_instance()->initialize(__FILE__, 'index_controller', 'http://solarity/');
+Solarity::get_instance()->initialize(__FILE__, 'index_controller', 'http://solarity/application/');
 
 // Bootstrap. (returns the controller given determined)
 $application = Solarity::get_instance()->bootstrap();
