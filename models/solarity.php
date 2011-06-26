@@ -56,6 +56,7 @@ class SolarityModel
         $model_path = APP_ROOT . 'models/' . $controller . '.php';
         
         var_dump($tokens);
+        var_dump($_GET);
         exit;
         if(!file_exists($controller_path))
         {
