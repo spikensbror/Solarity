@@ -10,8 +10,8 @@
 
 **/
 
-// Include solarity.
-include_once('/path/to/solarity.php');
+// Include solarity. (change to the root solarity php file)
+include_once('../solarity.php');
 
 // Initialize and bootstrap.
 Solarity::get_instance()->initialize(__FILE__);
