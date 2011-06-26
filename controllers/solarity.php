@@ -28,14 +28,19 @@ class Solarity extends Controller
         parent::__construct('SolarityModel', false);
     }
     
-    public function initialize($app_root)
+    public function initialize($app_index_file)
     {
-        $this->_model->initialize($app_root);
+        $this->_model->initialize($app_index_file);
     }
     
-    public function load_library($library, $internal = false)
+    public function load_library($library)
     {
-        ($internal) ? $this->_model->load_solarity_library($library) : $this->_model->load_library($library);
+        $this->_model->load_library($library);
+    }
+    
+    public function register($library, $class)
+    {
+        $this->{$library} = $class;
     }
 }
 
