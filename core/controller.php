@@ -10,12 +10,12 @@
 
 **/
 
-class Controller
+abstract class Controller
 {
-    private $_model = null;
-    private $_view = null;
+    protected $_model = null;
+    protected $_view = null;
     
-    function __construct($model, $view = true)
+    protected function __construct($model, $view = true)
     {
         $this->_model = new $model();
         $this->_view = ($view) ? new View() : null;
