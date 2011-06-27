@@ -1,0 +1,1 @@
+<p>Footer : {{APP_URL}}</p>
