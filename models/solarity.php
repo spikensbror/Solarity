@@ -30,6 +30,7 @@ class SolarityModel
     
     public function bootstrap()
     {
+        $_GET['uri'] = (!isset($_GET['uri'])) ? '' : $_GET['uri'];
         $tokens = $this->_tokenize_uri($_GET['uri']);
         return $this->_bootstrap($tokens);
     }
@@ -39,7 +40,7 @@ class SolarityModel
         $explode = explode('/', rtrim($uri, '/'));
         $tokens = array();
         
-        $tokens['controller'] = (sizeof($explode) > 0) ? array_shift($explode) : INDEX;
+        $tokens['controller'] = ($explode[0] != '') ? array_shift($explode) : INDEX;
         $tokens['method'] = (sizeof($explode) > 0) ? array_shift($explode) : null;
         $tokens['arguments'] = (sizeof($explode) > 0) ? $explode : array();
         
@@ -64,7 +65,7 @@ class SolarityModel
         @include_once($model_path);
         
         $controller = new $controller();
-        if(!method_exists($controller, $method))
+        if($method == null || !method_exists($controller, $method))
         {
 			array_unshift($arguments, $method);
 			call_user_func_array(array($controller, $controller->method), $arguments);
