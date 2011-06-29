@@ -16,13 +16,13 @@ class SolarityModel
     {
         $result = false;
         $path = SOLARITY_ROOT . 'libraries/' . $library . '/';
-        $result = is_dir($path) && include_once($path . 'model.php');
-        $result =($path) && include_once($path . 'controller.php');
+        $result = is_dir($path) && @include_once($path . 'model.php');
+        $result =($path) && @include_once($path . 'controller.php');
         
         if(!$result)
         {
             $path = SOLARITY_ROOT . 'libraries/' . $library . '.php';
-            $result = is_file($path) && include_once($path);
+            $result = is_file($path) && @include_once($path);
         }
         
         return $result;
