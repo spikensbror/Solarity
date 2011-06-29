@@ -16,11 +16,11 @@ abstract class Controller
     protected $_view = null;
 	public $method = null;
     
-    protected function __construct($model = false, $view = true, $method = false)
+    protected function __construct($method = null, $model = null, $view = true)
     {
-        $this->_model = (!$model) ? null : new $model();
+		$this->method = $method;
+        $this->_model = ($model == null) ? $model : new $model();
         $this->_view = ($view) ? new View() : null;
-		$this->method = (!$method) ? null : $method;
     }
 }
 

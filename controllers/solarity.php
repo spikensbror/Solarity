@@ -25,7 +25,7 @@ class Solarity extends Controller
     
     function __construct()
     {
-        parent::__construct('SolarityModel', false);
+        parent::__construct(null, 'SolarityModel', false);
     }
     
     public function initialize($app_root, $index, $app_url)

@@ -16,7 +16,7 @@ class Mustache extends Controller
 {
     function __construct()
     {
-        parent::__construct('MustacheModel', false);
+        parent::__construct(null, 'MustacheModel', false);
     }
     
     public function render($path, $tags, $json = false)

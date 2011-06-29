@@ -4,7 +4,7 @@ class Error extends Controller
 {
     function __construct()
     {
-        parent::__construct(false, true, 'show');
+        parent::__construct('show');
     }
     
     public function show($error)
