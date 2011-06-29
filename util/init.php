@@ -58,6 +58,7 @@ function recurse_copy($src,$dst) {
 					Solarity::get_instance()->initialize(__FILE__, $_POST['index_controller'], $_POST['app_url']);
 					recurse_copy($root . 'application/', dirname(__FILE__) . '/');
 					mkdir('models/');
+					mkdir('public/');
 					rename('htaccess', '.htaccess');
 					$index = file_get_contents('index.php');
 					$index = str_replace('{SOLARITY_ROOT}', SOLARITY_ROOT, $index);

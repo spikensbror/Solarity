@@ -8,4 +8,5 @@ Options +FollowSymLinks
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !^(.*)index.php
+RewriteCond %{REQUEST_URI} !^(.*)public(.*)
 RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
