@@ -14,18 +14,22 @@ class SolarityModel
 {
     public function load_library($library)
     {
-        $result = false;
         $path = SOLARITY_ROOT . 'libraries/' . $library . '/';
-        $result = is_dir($path) && @include_once($path . 'model.php');
-        $result =($path) && @include_once($path . 'controller.php');
-        
-        if(!$result)
+        if(is_dir($path))
         {
-            $path = SOLARITY_ROOT . 'libraries/' . $library . '.php';
-            $result = is_file($path) && @include_once($path);
+            include_once($path . 'model.php');
+            include_once($path . 'controller.php');
+            return true;
         }
         
-        return $result;
+        $path = SOLARITY_ROOT . 'libraries/' . $library . '.php';
+        if(is_file($path))
+        {
+            include_once($path);
+            return true;
+        }
+        
+        return false;
     }
     
     public function bootstrap()
