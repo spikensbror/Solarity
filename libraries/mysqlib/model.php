@@ -28,14 +28,17 @@ class MySQLibModel
     
     public function connect($id, $server, $username, $password, $database)
     {
-        $connection = new MySQLibConnection($server, $username, $password, $database);
-        if($connection->is_error())
+        if(!isset($this->_server_pool[$id]))
         {
-            unset($connection);
-        }
-        else
-        {
-            $this->_server_pool[$id] = $connection;
+            $connection = new MySQLibConnection($server, $username, $password, $database);
+            if($connection->is_error())
+            {
+                unset($connection);
+            }
+            else
+            {
+                $this->_server_pool[$id] = $connection;
+            }
         }
         
         return $this->get($id);
