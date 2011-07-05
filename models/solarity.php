@@ -68,17 +68,24 @@ class SolarityModel
         include_once($controller_path);
         @include_once($model_path);
         
-        $controller = new $controller();
-        if($method == null || !method_exists($controller, $method))
+        $object = new $controller();
+        $reflection = null;
+        try
         {
-			array_unshift($arguments, $method);
-			call_user_func_array(array($controller, $controller->method), $arguments);
+            $reflection = new ReflectionMethod($controller, $method);
+            if($reflection->getNumberOfRequiredParameters() != sizeof($arguments))
+            {
+                throw new ReflectionException();    
+            }
         }
-        else
-		{
-			call_user_func_array(array($controller, $method), $arguments);
-		}
-        return $controller;
+        catch(ReflectionException $e)
+        {
+            array_unshift($arguments, $method);
+            $reflection = new ReflectionMethod($controller, $object->method);
+        }
+        $reflection->invokeArgs($object, $arguments);
+        
+        return $object;
     }
 }
 
